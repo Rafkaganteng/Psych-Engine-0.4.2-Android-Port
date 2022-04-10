@@ -32,9 +32,9 @@ import Discord;
 using StringTools;
 
 class FunkinLua {
-        public static var Function_Stop = "Function_Stop";
-	public static var Function_Continue = "Function_Continue";
-   
+	public static var Function_Stop = 1;
+	public static var Function_Continue = 0;
+
 	#if LUA_ALLOWED
 	public var lua:State = null;
 	#end
@@ -62,7 +62,7 @@ class FunkinLua {
 			return;
 		}
 		scriptName = script;
-		trace('Lua file loaded succesfully:' + script);
+		trace('Lua file loaded succesfully: ' + script);
 
 		#if (haxe >= "4.0.0")
 		accessedProps = new Map();
@@ -74,8 +74,8 @@ class FunkinLua {
 		lePlayState = curState;
 
 		// Lua shit
-                set('Function_Stop', "Function_Stop");
-                set('Function_Continue', "Function_Continue");
+		set('Function_Stop', Function_Stop);
+		set('Function_Continue', Function_Continue);
 		set('luaDebugMode', false);
 		set('luaDeprecatedWarnings', true);
 		set('inChartEditor', false);
